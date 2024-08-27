@@ -10,6 +10,8 @@ function App() {
           <Menu />
         </div>
         <div className='flex-[0.85] flex-col content-center text-center h-[calc(100vh-3rem)] space-y-8 mt-12'>
+          <NoProject />
+          <AddProject />
           <Task />
         </div>
       </main>
