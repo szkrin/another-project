@@ -1,17 +1,18 @@
 import AddProject from './components/AddProject';
 import NoProject from './components/NoProjects';
+import Task from './components/Task';
+import Menu from './components/Menu';
 function App() {
   return (
     <>
-      <div className='flex flex-row h-screen mt-10'>
-        <div className='basis-1/5 bg-slate-950 text-white pt-14 rounded-tr-2xl text-xl'>
-          <h1 className='text-2xl font-bold p-10 uppercase'>Your projects</h1>
-          <button className='rounded-lg p-4 bg-slate-800 ml-10 hover:bg-slate-400 hover:text-slate-800 uppercase'>+ Add Project</button>
-          <p className='ml-12 mt-12 bg-slate-700 w-2/3 p-2'>Learning React</p>
+      <main className='flex'>
+        <div className='flex-[0.15] p-12 bg-slate-800 h-[calc(100vh-3rem)] text-slate-100 space-y-8 rounded-tr-2xl mt-12'>
+          <Menu />
         </div>
-        <AddProject />
-        
-      </div>
+        <div className='flex-[0.85] flex-col content-center text-center h-[calc(100vh-3rem)] space-y-8 mt-12'>
+          <Task />
+        </div>
+      </main>
     </>
   );
 }
