@@ -1,21 +1,21 @@
 import TasksList from "./TasksList";
 
 
-export default function Task() {
+export default function Project({ title, project, onDelete }) {
     return (
         <>
             <div className='text-left m-auto p-10 w-3/4 grid grid-cols-3 text-slate-800 gap-6 text-lg'>
                 <div className='col-span-2'>
-                    <h2 className='font-bold text-3xl'>Learning React</h2>
+                    <h2 className='font-bold text-3xl'>{title}</h2>
                 </div>
                 <div className='text-right'>
-                    <button className='font-semibold'>Delete</button>
+                    <button onClick={onDelete} className='font-semibold'>Delete</button>
                 </div>
                 <div className='col-span-3'>
-                    <span className='text-slate-500'>Dec 29, 2024</span>
+                    <span className='text-slate-500'>{project.dueDate}</span>
                 </div>
                 <div className='col-span-3 border-b-2 border-slate-600 pb-10'>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sed rerum ea laboriosam possimus et tenetur doloremque dignissimos ipsa, aspernatur tempore perferendis aliquam quas id fugiat quia deserunt architecto. Cumque, maiores!
+                    {project.description}
                 </div>
                 <div className='col-span-3'>
                     <h2 className='font-bold text-3xl mt-4'>Tasks</h2>
