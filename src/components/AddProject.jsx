@@ -36,7 +36,6 @@ export default function AddProject({ onCancel, onSave, projects }) {
                 <input ref={dateRef} className='w-full border-2 p-2 bg-slate-300' type='date'></input>
             </div>
             {validationErrors && <div className="text-2xl text-red-500 text-center p-2 font-bold uppercase">{validationErrors}</div>}
-
         </div>
     )
 }

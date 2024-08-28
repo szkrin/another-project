@@ -4,12 +4,11 @@ import Project from './components/Project';
 import Menu from './components/Menu';
 import { useState } from 'react';
 
-const projects = {};
 
 function App() {
 
-
   const [content, setContent] = useState('NoProject');
+  const [projects, setProjects] = useState({});
 
 
   function onCreateProjectHandler() {
@@ -21,11 +20,14 @@ function App() {
   }
 
   function addNewProjectHandler(title, description, date) {
-    projects[title] = {
-      description: description,
-      dueDate: date,
-      tasks: []
-    };
+    setProjects({
+      ...projects,
+      [title]: {
+        description: description,
+        dueDate: date,
+        tasks: []
+      }
+    });
     setContent('NoProject');
   }
 
@@ -34,8 +36,33 @@ function App() {
   }
 
   function onDeleteProjectHandler(project) {
-    delete projects[project];
+    const projectsCopy = { ...projects };
+    delete projectsCopy[project];
+    setProjects(projectsCopy);
     setContent('NoProject');
+  }
+
+  function addTaskToProjectHandler(project, task) {
+    setProjects({
+      ...projects,
+      [project]: {
+        ...projects[project],
+        tasks: [
+          ...projects[project].tasks,
+          task
+        ]
+      }
+    })
+  }
+
+  function removeTaskFromProjectHandler(project, task) {
+    setProjects({
+      ...projects,
+      [project]: {
+        ...projects[project],
+        tasks: projects[project].tasks.filter(v => v !== task)
+      }
+    })
   }
 
   return (
@@ -48,7 +75,7 @@ function App() {
           {
             content == 'NoProject' ? <NoProject onCreateProject={onCreateProjectHandler} /> :
               content == 'AddProject' ? <AddProject onCancel={onCancelHandler} onSave={addNewProjectHandler} projects={projects} /> :
-                <Project onDelete={() => onDeleteProjectHandler(content)} title={content} project={projects[content]} />
+                <Project onDelete={() => onDeleteProjectHandler(content)} title={content} project={projects[content]} onAddTask={addTaskToProjectHandler} onRemoveTask={removeTaskFromProjectHandler} />
           }
         </div>
       </main>
