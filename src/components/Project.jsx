@@ -18,7 +18,7 @@ export default function Project({ title, project, onDelete, onAddTask, onRemoveT
 
     return (
         <>
-            <div className='text-left m-auto p-10 w-3/4 grid grid-cols-3 text-slate-800 gap-6 text-lg'>
+            <div className='text-left m-auto p-10 lg:w-3/4 grid grid-cols-3 text-slate-800 gap-6 text-lg'>
                 <div className='col-span-2'>
                     <h2 className='font-bold text-3xl'>{title}</h2>
                 </div>

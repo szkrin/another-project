@@ -18,7 +18,7 @@ export default function AddProject({ onCancel, onSave, projects }) {
     }
 
     return (
-        <div className='text-left p-10 w-1/2 m-auto text-slate-800 space-y-6'>
+        <div className='text-left p-10 lg:w-1/2 m-auto text-slate-800 space-y-6'>
             <div className='text-right space-x-6'>
                 <button onClick={onCancel} className='text-lg'>Cancel</button>
                 <button onClick={() => checkValidation(titleRef.current.value, descRef.current.value, dateRef.current.value)} className='text-lg px-7 py-2 bg-slate-800 text-slate-100 rounded-lg'>Save</button>
