@@ -11,6 +11,7 @@ export default function Project({ title, project, onDelete, onAddTask, onRemoveT
         if (task !== '') {
             ref.current.value = '';
             onAddTask(title, task);
+            setValidationErrors(null);
         } else {
             setValidationErrors('Please enter task name');
         }
