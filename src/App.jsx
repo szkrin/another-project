@@ -18,20 +18,20 @@ function App() {
   function onCancelHandler() {
     setContent('NoProject');
   }
-  
-  function onMenuClickHandler(){
+
+  function onMenuClickHandler() {
     setContent('NoProject');
   }
 
   function addNewProjectHandler(title, description, date) {
-    setProjects({
-      ...projects,
+    setProjects((prev) => ({
+      ...prev,
       [title]: {
         description: description,
         dueDate: date,
         tasks: []
       }
-    });
+    }));
     setContent('NoProject');
   }
 
@@ -47,8 +47,8 @@ function App() {
   }
 
   function addTaskToProjectHandler(project, task) {
-    setProjects({
-      ...projects,
+    setProjects((prev) => ({
+      ...prev,
       [project]: {
         ...projects[project],
         tasks: [
@@ -56,24 +56,24 @@ function App() {
           task
         ]
       }
-    })
+    }))
   }
 
   function removeTaskFromProjectHandler(project, task) {
-    setProjects({
-      ...projects,
+    setProjects((prev) => ({
+      ...prev,
       [project]: {
         ...projects[project],
         tasks: projects[project].tasks.filter(v => v !== task)
       }
-    })
+    }))
   }
 
   return (
     <>
       <main className='lg:flex'>
         <div className='lg:flex-[0.15] p-12 bg-slate-800 lg:h-[calc(100vh-3rem)] text-slate-100 space-y-8 lg:rounded-tr-2xl lg:mt-12 text-center lg:text-left'>
-          <Menu onCreateProject={onCreateProjectHandler} projects={projects} onProjectClick={viewProjectHandler} onMenuClick={onMenuClickHandler} />
+          <Menu onCreateProject={onCreateProjectHandler} projects={projects} onProjectClick={viewProjectHandler} onMenuClick={onMenuClickHandler} content={content} />
         </div>
         <div className='lg:flex-[0.85] flex-col lg:content-center text-center lg:h-[calc(100vh-3rem)] space-y-8 mt-12'>
           {
